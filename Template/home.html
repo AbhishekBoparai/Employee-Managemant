@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Home Page of our website</title>
+  </head>
+  <body>
+    
+    
+
+
+    <div class="container" style="text-align:center">
+        {%include 'navbar.html'%}
+    <h1>Hello All This is our home page and we aremaking a website  </h1>
+
+     <!--method of sending data from template to views-->
+     <form action="/index/" method="POST">
+        {%csrf_token%}
+        <input type="text" name="check">
+        <button>Send</button>
+     </form>
+
+
+
+
+
+    <p>This is our home page and whatever you want to know you can search gere related to our topic.This page provides you a rellevent ammount of information throughout in the rest forms</p>
+    <button>Contact Us</button>
+
+    <!--Excessing dynamic values which is been reffered from views.py in the form of data imto template-->
+    {%if isActive%}<!--if condition in django is writeen as the -->
+    <div>
+
+        <h1>Student Records is given as {{student}}</h1>
+        <h2>Name is {{name}}</h2>
+        <hr>
+        <h1>Student Data</h1>
+        <h2>Student Name: {{student_data.student_name}}</h2>
+        <h3>Student Collage: {{student_data.student_collage}}</h3>
+        <h4>Student city: {{student_data.student_city}}</h4>
+    </div>
+    {% endif %}
+
+
+    <hr>
+    <h1>Favourite Programs</h1>
+    {% for p in list_of_programs %}
+
+    <h3>{{p}}</h3>
+
+    {%endfor%}
+
+    
+    </div>
+  </body>
+</html>
