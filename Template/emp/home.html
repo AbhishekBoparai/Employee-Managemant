@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  </head>
+  <body>
+
+    {%include 'emp/navbar.html'%}
+
+
+    <h1 class="text-center my-3">Employee Management</h1>
+    <h1 class="text-center my-3">List of Employees</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>    #SNO.</th>
+                                    <th>NAME</th>
+                                    <th>EMP_ID</th>
+                                    <th>PHONE</th>
+                                    <th>ADDRESS</th>
+                                    <th>WORKING</th>
+                                    <th>DEPARTMENT</th>
+                                    <th>ACTION</th>
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for e in emps%}
+                                <tr>
+                                    <!--we have used forloop for counter in place of e.id because after deleting id in order to update update S NO-->
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{e.name}}</td>
+                                    <td>{{e.emp_id}}</td>
+                                    <td>{{e.phone}}</td>
+                                    <td>{{e.address}}</td>
+                                    <td>{{e.working}}</td>
+                                    <td>{{e.Department}}</td>
+                                    <td>
+                                    <a href="/emp/delete-emp/{{e.id}}"class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="/emp/update-emp/{{e.id}}"class="btn btn-danger btn-sm">Update</a>
+                                    </td>
+                                </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
